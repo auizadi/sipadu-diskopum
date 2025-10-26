@@ -80,11 +80,11 @@
                         <span class="ms-3">Dashboard</span>
                     </a>
                 </li>
-                <li x-data="{ open: {{ request()->routeIs('surat-masuk') || request()->routeIs('surat-keluar') ? 'true' : 'false' }} }">
+                <li x-data="{ open: $persist(false) }">
                     <button type="button" @click="open = !open"
                         class="flex items-center w-full p-2 text-base text-gray-900 transition duration-300 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
-                        <i class="fa-solid fa-envelopes-bulk dark:text-white/60 text-black text-xl"></i>
-                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Master Surat</span>
+                        <i class="fa-solid fa-box-archive dark:text-white/60 text-black text-xl"></i>
+                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Manajemen Arsip</span>
                         <i class="fa-solid fa-caret-down dark:text-white/60 text-black transition-transform duration-300"
                             :class="{ 'rotate-180': open }"></i>
                     </button>
@@ -95,37 +95,51 @@
                         x-transition:leave-start="opacity-100 transform translate-y-0"
                         x-transition:leave-end="opacity-0 transform -translate-y-2" class="py-2 space-y-2">
                         <li>
-                            <a href="{{ route('surat-masuk') }}" wire:navigate
-                                class="flex items-center w-full p-2 {{ request()->routeIs('surat-masuk') ? 'bg-gray-200 dark:bg-gray-600' : '' }} text-gray-900 transition duration-300 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
-                                <i class="fa-solid fa-envelope dark:text-white/60 text-black mr-2 text-sm"></i>
-                                Surat Masuk
+                            <a href="{{ route('kelembagaan') }}" wire:navigate
+                                class="flex items-center w-full p-2 {{ request()->routeIs('kelembagaan') ? 'bg-gray-200 dark:bg-gray-600' : '' }} text-gray-900 transition duration-300 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                                <i class="fa-solid fa-people-roof dark:text-white/60 text-black mr-2 text-sm"></i>
+                                Kelembagaan
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('surat-keluar') }}" wire:navigate
-                                class="flex items-center w-full p-2 {{ request()->routeIs('surat-keluar') ? 'bg-gray-200 dark:bg-gray-600' : '' }} text-gray-900 transition duration-300 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
-                                <i class="fa-solid fa-envelope-open dark:text-white/60 text-black mr-2 text-sm"></i>
-                                Surat Keluar
+                            <a href="{{ route('pengembangan') }}" wire:navigate
+                                class="flex items-center w-full p-2 {{ request()->routeIs('pengembangan') ? 'bg-gray-200 dark:bg-gray-600' : '' }} text-gray-900 transition duration-300 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                                <i class="fa-solid fa-envelopes-bulk dark:text-white/60 text-black mr-2 text-sm"></i>
+                                Pengembangan
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('pemberdayaan') }}" wire:navigate
+                                class="flex items-center w-full p-2 {{ request()->routeIs('pemberdayaan') ? 'bg-gray-200 dark:bg-gray-600' : '' }} text-gray-900 transition duration-300 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                                <i class="fa-solid fa-inbox dark:text-white/60 text-black mr-2 text-sm"></i>
+                                Pemberdayaan
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('pengawasan') }}" wire:navigate
+                                class="flex items-center w-full p-2 {{ request()->routeIs('pengawasan') ? 'bg-gray-200 dark:bg-gray-600' : '' }} text-gray-900 transition duration-300 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                                <i class="fa-solid fa-users-viewfinder dark:text-white/60 text-black mr-2 text-sm"></i>
+                                Pengawasan
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('sekretariat') }}" wire:navigate
+                                class="flex items-center w-full p-2 {{ request()->routeIs('sekretariat') ? 'bg-gray-200 dark:bg-gray-600' : '' }} text-gray-900 transition duration-300 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                                <i class="fa-solid fa-users-rays dark:text-white/60 text-black mr-2 text-sm"></i>
+                                Sekretariat
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('kepegawaian') }}" wire:navigate
+                                class="flex items-center w-full p-2 {{ request()->routeIs('kepegawaian') ? 'bg-gray-200 dark:bg-gray-600' : '' }} text-gray-900 transition duration-300 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                                <i class="fa-solid fa-users-line dark:text-white/60 text-black mr-2 text-sm"></i>
+                                Kepegawaian
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <i class="fa-solid fa-box-archive dark:text-white/60 text-black text-xl"></i>
 
-                        <span class="ms-3">Manajemen Arsip</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <i class="fa-solid fa-chalkboard-user dark:text-white/60 text-black text-xl"></i>
-
-                        <span class="ms-3">Panduan</span>
-                    </a>
-                </li>
                 <li>
                     <button type="button" data-modal-target="logout-modal" data-modal-toggle="logout-modal"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group w-full text-left">
@@ -186,7 +200,6 @@
                             Batal
                         </button>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -198,6 +211,9 @@
             document.getElementById('crud-modal').classList.toggle('hidden');
         }
     </script>
+    <script src="https://kit.fontawesome.com/998802c292.js" crossorigin="anonymous"></script>
+    <script src="//unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js" defer></script>
+
 </body>
 
 </html>
