@@ -21,5 +21,9 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@mail.com',
             'password' => Hash::make('admin1234')
         ]);
+
+        $this->call([
+            SuratSeeder::class,
+        ]);
     }
 }

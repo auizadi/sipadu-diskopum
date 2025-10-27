@@ -19,6 +19,7 @@ class SuratFormModal extends Component
     public $noSurat, $kodeSurat, $perihal, $tanggalSurat, $tertuju, $jenisSurat, $file, $old_file;
     public $surat_id;
 
+    public $search = '';
 
     protected $rules = [
         'noSurat' => 'required|string|max:225',
@@ -30,6 +31,20 @@ class SuratFormModal extends Component
         'file' => 'required|file|mimes:pdf|max:2048',
 
     ];
+
+    protected $messages = [
+        'noSurat.required' => 'Nomor Surat wajib diisi.',
+        'kodeSurat.required' => 'Kode Surat wajib diisi.',
+        'perihal.required' => 'Perihal wajib diisi.',
+        'tanggalSurat.required' => 'Tanggal Surat wajib diisi.',
+        'tertuju.required' => 'Tertuju wajib diisi.',
+        'jenisSurat.required' => 'Jenis Surat wajib diisi.',
+        'file.required' => 'File Surat wajib diunggah.',
+        'file.mimes' => 'File Surat harus berupa file berformat PDF.',
+        'file.max' => 'Ukuran file maksimal adalah 2MB.',
+    ];
+
+
 
     protected $paginationTheme = 'tailwind';
 
@@ -78,7 +93,6 @@ class SuratFormModal extends Component
         );
         session()->flash('success', $this->editMode ? 'Data berhasil diperbaharui.' : 'Data berhasil disimpan.');
         $this->closeModal();
-        // $this->dispatch('dataTersimpan');
     }
 
     // edit
@@ -116,8 +130,25 @@ class SuratFormModal extends Component
         session()->flash('success', 'Data berhasil dihapus.');
     }
 
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
-        return view('livewire.surat-form-modal', ['surats' => Surat::where('kategori', $this->kategori)->latest()->paginate(10)]);
+        $surats = Surat::query()
+            ->where('kategori', $this->kategori)
+            ->when($this->search, function ($query) {
+                $query->where(function ($q) {
+                    $q->where('no_surat', 'like', '%' . $this->search . '%')
+                        ->orWhereDate('tanggal_surat', 'like', '%' . $this->search . '%')
+                        ->orWhere('jenis_surat', 'like', '%' . $this->search . '%')
+                        ->orWhere('tertuju', 'like', '%' . $this->search . '%')
+                        ->orWhere('perihal', 'like', '%' . $this->search . '%')
+                        ->orWhere('kode_surat', 'like', '%' . $this->search . '%');
+                });
+            })->latest()->paginate(10);
+        return view('livewire.surat-form-modal', ['surats' => $surats]);
     }
 }

@@ -7,6 +7,14 @@ use Livewire\Component;
 
 class Dashboard extends Component
 {
+    // public $showToast = false;
+
+    // public function mount(){
+    //     if(session('show_welcome_toast')){
+    //         $this->showToast = true;
+    //         session()->forget('show_welcome_toast');
+    //     }
+    // }
     public function render()
     {
         $dataCount = [

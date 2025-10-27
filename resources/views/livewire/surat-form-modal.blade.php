@@ -57,7 +57,7 @@
                     class="flex items-center justify-between p-6 border-b dark:border-gray-700 bg-white dark:bg-gray-800 sticky top-0 z-10">
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Tambah Data Surat</h3>
                     <button wire:click="closeModal"
-                        class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg p-1">
+                        class="text-gray-400 hover:cursor-pointer hover:text-gray-600 dark:hover:text-gray-300 rounded-lg p-1">
                         ✕
                     </button>
                 </div>
@@ -69,7 +69,7 @@
                             <div>
                                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No.
                                     Surat</label>
-                                <input type="text" wire:model="noSurat"
+                                <input type="text" wire:model.blur="noSurat"
                                     class="w-full p-2 border-gray-300 dark:border-gray-500 rounded-lg focus:ring focus:ring-gray-500 dark:bg-gray-700 dark:text-white"
                                     placeholder="Masukkan nomor surat" required>
                                 @error('noSurat')
@@ -149,11 +149,11 @@
                         {{-- Footer --}}
                         <div class="flex justify-end space-x-2 pt-4 border-t dark:border-gray-700">
                             <button type="button" wire:click="closeModal"
-                                class="px-4 py-2 bg-gray-300 text-gray-800 rounded-lg hover:bg-gray-400 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500">
+                                class="hover:cursor-pointer px-4 py-2 bg-gray-300 text-gray-800 rounded-lg hover:bg-gray-400 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500">
                                 Batal
                             </button>
                             <button type="submit"
-                                class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                                class="hover:cursor-pointer px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
                                 Simpan
                             </button>
                         </div>
@@ -191,8 +191,28 @@
         </div>
     @endif
 
+    {{-- search bar --}}
+    <div class="flex justify-end items-center mt-5">
+        <div class="max-w-52 lg:max-w-xs w-full">
+            <label for="default-search"
+                class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+            <div class="relative">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                    </svg>
+                </div>
+                <input type="search" id="default-search" wire:model.live.debounce.500ms='search'
+                    class="block w-full p-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Cari data..." />
+            </div>
+        </div>
+    </div>
+
     {{-- tabel --}}
-    <div class="relative overflow-x-auto shadow-md rounded-lg my-5 lg:my-7">
+    <div class="relative overflow-x-auto shadow-md rounded-lg my-5 lg:my-3">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
 
@@ -232,7 +252,7 @@
                     <tr class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
                         <th scope="row"
                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $loop->iteration }}.
+                            {{ $surats->firstItem() + $loop->index }}.
                         </th>
                         <td class="px-6 py-4">
                             {{ $surat->no_surat }}
@@ -274,42 +294,69 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="8" class="text-center italic py-4 text-gray-500">Belum ada data surat
-                            {{ $kategori }}.</td>
+                        <td colspan="8" class="text-center italic py-4 text-gray-500">
+                            @if ($search)
+                                Data tidak ditemukan untuk pencarian "{{ $search }}".
+                            @else
+                                Belum ada data surat {{ $kategori }}.
+                            @endif
+                        </td>
                     </tr>
                 @endforelse
             </tbody>
         </table>
     </div>
+
     {{-- pagination --}}
     <div class="flex flex-col items-center my-5">
         <!-- Help text -->
-        <span class="text-sm text-gray-700 dark:text-gray-400">
-            Menampilkan <span class="font-semibold text-gray-900 dark:text-gray-700">{{ $surats->firstItem() }}</span>
-            sampai <span class="font-semibold text-gray-900 dark:text-gray-700">{{ $surats->lastItem() }}</span> dari
-            <span class="font-semibold text-gray-900 dark:text-gray-700">{{ $surats->total() }}</span> Data
+        <span class="text-sm text-gray-700 dark:text-gray-500">
+            Menampilkan
+            <span class="font-semibold text-gray-900 dark:text-gray-800">
+                {{ $surats->firstItem() }}
+            </span>
+            sampai
+            <span class="font-semibold text-gray-900 dark:text-gray-800">
+                {{ $surats->lastItem() }}
+            </span>
+            dari
+            <span class="font-semibold text-gray-900 dark:text-gray-800">
+                {{ $surats->total() }}
+            </span>
+            Data
         </span>
-        <div class="inline-flex mt-2 xs:mt-0">
-            <!-- Buttons -->
-            <button wire:click='previousPage' wire:loading.attr='disabled' @disabled(!$surats->onFirstPage())
-                class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800 rounded-s hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                <svg class="w-3.5 h-3.5 me-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                    fill="none" viewBox="0 0 14 10">
+
+        <!-- Pagination Buttons -->
+        <div class="inline-flex mt-3">
+            <!-- Tombol Prev -->
+            <button wire:click="previousPage" wire:loading.attr="disabled" @disabled($surats->onFirstPage())
+                class="flex items-center justify-center px-4 py-2 text-sm font-medium rounded-l-lg transition-all duration-200 hover:cursor-pointer
+                   {{ $surats->onFirstPage()
+                       ? 'bg-gray-300 text-gray-500 cursor-not-allowed dark:bg-gray-700 dark:text-gray-500'
+                       : 'bg-gray-800 text-white hover:bg-gray-900 dark:bg-gray-800 dark:hover:bg-gray-700' }}">
+                <svg class="w-3.5 h-3.5 me-2 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 14 10" aria-hidden="true">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M13 5H1m0 0 4 4M1 5l4-4" />
                 </svg>
                 Prev
             </button>
-            <button wire:click='nextPage' wire:loading.attr='disabled' @disabled(!$surats->hasMorePages())
-                class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800 border-0 border-s border-gray-700 rounded-e hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+
+            <!-- Tombol Next -->
+            <button wire:click="nextPage" wire:loading.attr="disabled" @disabled(!$surats->hasMorePages())
+                class="flex items-center justify-center px-4 py-2 text-sm font-medium rounded-r-lg transition-all duration-200 hover:cursor-pointer
+                   {{ !$surats->hasMorePages()
+                       ? 'bg-gray-300 text-gray-500 cursor-not-allowed dark:bg-gray-700 dark:text-gray-500'
+                       : 'bg-gray-800 text-white hover:bg-gray-900 dark:bg-gray-800 dark:hover:bg-gray-700' }}">
                 Next
-                <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                    fill="none" viewBox="0 0 14 10">
+                <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 14 10" aria-hidden="true">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M1 5h12m0 0L9 1m4 4L9 9" />
                 </svg>
             </button>
         </div>
     </div>
+
 
 </div>

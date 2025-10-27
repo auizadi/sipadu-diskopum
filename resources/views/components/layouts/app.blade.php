@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $title ?? 'Page Title' }}</title>
+    <title>@yield('title', 'SIPADU')</title>
+    {{-- icon --}}
+    <link rel="icon" href="{{ asset('icon-megilan.png') }}" sizes="32x32" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://kit.fontawesome.com/998802c292.js" crossorigin="anonymous"></script>
@@ -205,14 +207,22 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     <script>
         function toggleModal() {
             document.getElementById('crud-modal').classList.toggle('hidden');
         }
     </script>
+
+    {{-- CDN flowbite --}}
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+
+    {{-- CDN fontawesome --}}
     <script src="https://kit.fontawesome.com/998802c292.js" crossorigin="anonymous"></script>
+
+    {{-- plugin persist alpinejs --}}
     <script src="//unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js" defer></script>
+
+
 
 </body>
 
