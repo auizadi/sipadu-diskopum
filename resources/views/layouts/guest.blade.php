@@ -23,7 +23,7 @@
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
         <div class="flex flex-row md:flex-col justify-center items-start md:items-center gap-5 mb-5 mx-5">
             <a href="/">
-                <img src="{{ asset('logo-lmg.png') }}" class="w-32 h-24 md:w-20 md:24 fill-current text-gray-500"
+                <img src="{{ asset('icon-megilan.png') }}" class="w-32 h-24 md:w-20 md:24 fill-current text-gray-500"
                     alt="lamongan">
             </a>
             <div class="text-center dark:text-gray-100">
