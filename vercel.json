@@ -5,6 +5,7 @@
         "api/index.php": { "runtime": "vercel-php@0.7.4" }
     },
     "routes": [
+        { "src": "/(css|js|build)/(.*)", "dest": "/public/$1/$2" },
         {
             "src": "/(.*\\.(png|jpg|jpeg|gif|webp|svg|ico))",
             "dest": "/public/$1"
@@ -17,7 +18,7 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
-        "APP_URL": "https://yourproductionurl.com",
+        "APP_URL": "https://sipadu-diskopum.vercel.app",
         "APP_KEY": "base64:hm2iP8weodd6S2QmPdXh092dyJ/8QyAKMkt5sntAhrE=",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
@@ -29,5 +30,6 @@
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie"
+
     }
 }
