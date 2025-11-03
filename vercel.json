@@ -14,7 +14,7 @@
     ],
     "env": {
         "APP_ENV": "production",
-        "APP_DEBUG": "false",
+        "APP_DEBUG": "true",
         "APP_URL": "https://sipadu-diskopum.vercel.app",
         "APP_KEY": "base64:hm2iP8weodd6S2QmPdXh092dyJ/8QyAKMkt5sntAhrE=",
 
