@@ -7,7 +7,7 @@
     <title>@yield('title', 'SIPADU')</title>
     {{-- icon --}}
     <link rel="icon" href="{{ asset('icon-megilan.png') }}" sizes="32x32" type="image/png">
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+    {{-- <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" /> --}}
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://kit.fontawesome.com/998802c292.js" crossorigin="anonymous"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -213,9 +213,11 @@
             document.getElementById('crud-modal').classList.toggle('hidden');
         }
     </script>
+    <script src="{{ asset('build/assets/app.js') }}"></script>
+
 
     {{-- CDN flowbite --}}
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script> --}}
 
     {{-- CDN fontawesome --}}
     <script src="https://kit.fontawesome.com/998802c292.js" crossorigin="anonymous"></script>

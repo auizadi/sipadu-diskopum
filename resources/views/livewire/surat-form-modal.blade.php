@@ -8,7 +8,7 @@
         </div>
 
         <button type="button" wire:click='openModal'
-            class="text-white inline-flex items-center gap-2 bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+            class="text-white inline-flex items-center bg-teal-500 gap-2  hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
             <i class="fa-solid fa-plus dark:text-white text-black"></i>Tambah Data
         </button>
     </div>
@@ -17,8 +17,14 @@
 
     {{-- flash message --}}
     @if (session('success'))
-        <div id="alert-3" x-data="{ show: true }" x-init="setTimeout(() => show = false, 4000)" x-show="show" x-transition role="alert"
-            class="fixed z-50 flex items-center gap-3 px-4 py-3 rounded-lg shadow-md bg-green-50 text-green-800 dark:bg-gray-800 dark:text-green-400 top-4 left-4 right-4 sm:left-1/2 sm:-translate-x-1/2 sm:right-auto sm:w-auto sm:max-w-md lg:max-w-lg transition-all duration-300">
+        <div id="alert-3" x-data="{ show: true }" x-init="setTimeout(() => show = false, 4000)" x-show="show"
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 transform -translate-y-2"
+            x-transition:enter-end="opacity-100 transform translate-y-0"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100 transform translate-y-0"
+            x-transition:leave-end="opacity-0 transform -translate-y-2" role="alert"
+            class="fixed z-50 flex items-center gap-3 px-4 py-3 rounded-lg shadow-md bg-green-50 text-green-800 dark:bg-gray-800 dark:text-green-400 top-4 left-1/2 transform -translate-x-1/2 w-auto max-w-md transition-all duration-300">
 
             <!-- Icon -->
             <svg class="w-5 h-5 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20"

@@ -40,7 +40,7 @@
             <p class="text-gray-400 text-sm">Overview & statistic</p>
         </div>
         <button type="button"
-            class="text-white inline-flex gap-1 order-1 md:order-2 items-center bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br  rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+            class="text-white inline-flex gap-1 order-1 md:order-2 items-center bg-blue-500  rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
             <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                 width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                 <path fill-rule="evenodd"
@@ -96,7 +96,7 @@
                     <p class="text-2xl font-bold">{{ $dataCount['kelembagaan'] }}</p>
                 </div>
                 <button type="button"
-                    class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br  font-medium rounded-lg text-sm px-2 py-2 text-center me-2 mb-2">
+                    class="text-white bg-blue-500  font-medium rounded-lg text-sm px-2 py-2 text-center me-2 mb-2">
                     <svg class="w-10 h-10 text-gray-800 dark:text-white" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                         viewBox="0 0 24 24">
@@ -121,7 +121,7 @@
                     <p class="text-2xl font-bold">{{ $dataCount['pengembangan'] }}</p>
                 </div>
                 <button type="button"
-                    class="text-white bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:bg-gradient-to-br  font-medium rounded-lg text-sm px-2 py-2 text-center me-2 mb-2">
+                    class="text-white bg-orange-500  font-medium rounded-lg text-sm px-2 py-2 text-center me-2 mb-2">
                     <svg class="w-10 h-10 text-gray-800 dark:text-white" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                         viewBox="0 0 24 24">
@@ -148,7 +148,7 @@
                     <p class="text-2xl font-bold">{{ $dataCount['pemberdayaan'] }}</p>
                 </div>
                 <button type="button"
-                    class="text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br  font-medium rounded-lg text-sm px-2 py-2 text-center me-2 mb-2">
+                    class="text-white bg-red-500  font-medium rounded-lg text-sm px-2 py-2 text-center me-2 mb-2">
                     <svg class="w-10 h-10 text-gray-800 dark:text-white" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                         viewBox="0 0 24 24">
@@ -174,7 +174,7 @@
                     <p class="text-2xl font-bold">{{ $dataCount['pengawasan'] }}</p>
                 </div>
                 <button type="button"
-                    class="text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br  font-medium rounded-lg text-sm px-2 py-2 text-center me-2 mb-2">
+                    class="text-white bg-yellow-500  font-medium rounded-lg text-sm px-2 py-2 text-center me-2 mb-2">
                     <svg class="w-10 h-10 text-gray-800 dark:text-white" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                         viewBox="0 0 24 24">
@@ -200,7 +200,7 @@
                     <p class="text-2xl font-bold">{{ $dataCount['sekretariat'] }}</p>
                 </div>
                 <button type="button"
-                    class="text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br  font-medium rounded-lg text-sm px-2 py-2 text-center me-2 mb-2">
+                    class="text-white bg-green-500  font-medium rounded-lg text-sm px-2 py-2 text-center me-2 mb-2">
                     <svg class="w-10 h-10 text-gray-800 dark:text-white" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                         viewBox="0 0 24 24">
@@ -227,7 +227,7 @@
                     <p class="text-2xl font-bold">{{ $dataCount['kepegawaian'] }}</p>
                 </div>
                 <button type="button"
-                    class="text-white bg-gradient-to-r from-cyan-500 via-cyan-600 to-cyan-700 hover:bg-gradient-to-br  font-medium rounded-lg text-sm px-2 py-2 text-center me-2 mb-2">
+                    class="text-white bg-cyan-500  font-medium rounded-lg text-sm px-2 py-2 text-center me-2 mb-2">
                     <svg class="w-10 h-10 text-gray-800 dark:text-white" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                         viewBox="0 0 24 24">
@@ -254,7 +254,7 @@
                     <p class="text-2xl font-bold">{{ $dataCount['total'] }}</p>
                 </div>
                 <button type="button"
-                    class="text-white bg-gradient-to-r from-lime-500 via-lime-600 to-lime-700 hover:bg-gradient-to-br  font-medium rounded-lg text-sm px-2 py-2 text-center me-2 mb-2">
+                    class="text-white bg-lime-500  font-medium rounded-lg text-sm px-2 py-2 text-center me-2 mb-2">
                     <svg class="w-10 h-10 text-gray-800 dark:text-white" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                         viewBox="0 0 24 24">
