@@ -29,13 +29,7 @@
         "APP_ROUTES_CACHE": "/tmp/routes.php",
         "APP_SERVICES_CACHE": "/tmp/services.php",
 
-        "FILESYSTEM_DISK": "public",
-
-        "DB_HOST": "rynbiv.h.filess.io",
-        "DB_PORT": "3306",
-        "DB_DATABASE": "sipaduDB_unionworry",
-        "DB_USERNAME": "sipaduDB_unionworry",
-        "DB_PASSWORD": "6a57a19a243f8259a6f80d277ae974ece338174a"
+        "FILESYSTEM_DISK": "public"
     },
     "outputDirectory": "public"
 }
